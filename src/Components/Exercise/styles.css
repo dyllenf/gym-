@@ -5,3 +5,11 @@
 .exercise-name{
     background-color: #7BDEE7;
 }
+
+.headers{
+
+    background-color: #3D3D41;
+    color: white;
+    padding: .5%;
+    border-radius: 5%;
+}
