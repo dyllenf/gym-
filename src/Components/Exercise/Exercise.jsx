@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import Set from "../Set/Set";
-import "./styles.css"
+import "./styles.css";
+import CompletedSet from "../CompletedSet/CompletedSet"
 
 export default function Exercise( {exerciseName}) {
   const [sets, setSets] = useState([]);
+
+    const updateSet = (setNumber, newReps, newWeight) => {
+        const updatedSets = sets.map((set, index) => {
+            if (index === setNumber - 1) {
+                return { ...set, reps: newReps, weight: newWeight };
+            }
+            return set;
+        });
+        setSets(updatedSets);
+    };
 
   const addSet = (newSet) => {
     setSets([...sets, newSet]);
@@ -19,13 +30,9 @@ export default function Exercise( {exerciseName}) {
                 <div>Enter</div>
             </div>
             {sets.map((set, index) => (
-        <div key={index}>
-          <div>Set {index + 1}</div>
-          <div>{set.reps}</div>
-          <div>{set.weight}</div>
-        </div>
+        <CompletedSet reps={set.reps} weight={set.weight} setNumber={index+1} onUpdate={updateSet}/>
       ))}
-      <Set onEnter={addSet} />
+      <Set onEnter={addSet} setNumber={sets.length + 1} />
 
         </div>
     );
