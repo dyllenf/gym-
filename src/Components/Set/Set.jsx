@@ -29,7 +29,9 @@ export default function Set({ onEnter, setNumber }) {
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
       />
-      <button type="submit">Enter</button>
+      <button 
+      className="bg-cyan-400 rounded-md p-1"
+      type="submit">Enter</button>
     </form>
   );
 }
