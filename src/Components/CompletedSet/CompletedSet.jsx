@@ -48,12 +48,14 @@ export default function Set({ reps, weight, setNumber, onUpdate }) {
              value={currentWeight}
              onChange={(e) => handleInputChange(e, 1)}
            />
-           <button type="submit" onClick={handleSubmit}>Enter</button></>
+           <button type="submit" 
+           className="bg-cyan-400 rounded-md p-1"
+           onClick={handleSubmit}>Enter</button></>
             ) : (
             <>
             <div className='headers w-1/6'>{currentReps}</div>
             <div className='headers w-1/6'>{currentWeight}</div>
-            <button onClick={handleModeChange}> Edit </button>
+            <button className="bg-cyan-400 rounded-md p-1" onClick={handleModeChange}> Edit </button>
             </>
             )
              
