@@ -86,10 +86,15 @@ const CreateAccount = () => {
                     onChange={handleChange}
                 >
                     <option value="">Select Training Days Per Week</option>
-                    {[...Array(7)].map((_, i) => (
-                        <option key={i+1} value={i+1}>{i+1}</option>
-                    ))}
+                    <option value="1">1 Day </option>
+                    <option value="2">2 Days </option>
+                    <option value="3">3 Days </option>
+                    <option value="4">4 Days </option>
+                    <option value="5">5 Days </option>
+                    <option value="6">6 Days </option>
+                    <option value="7">7 Days </option>
                 </select><br/>
+
 
                 <input
                     type="text"
