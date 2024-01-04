@@ -25,14 +25,16 @@ export const SignIn = () => {
         }
     };
 
-    const handleCreateAccountClick = () => {
-        navigate('/createAccount'); 
-    };
+    
 
     const handleSignInClick = () => {
         navigate('/Landing');
         
     }
+    const handleCreateAccountClick = () => {
+        navigate('/create-account'); 
+    }
+
 
     return (
         <div className='Main'>

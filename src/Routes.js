@@ -2,7 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Tracking } from "./pages/Tracking";
 import { SignIn } from "./pages/SignIn";
 import { Landing } from "./pages/Landing";
-import { CreateAccount } from "./pages/createAccount";
+import CreateAccount from "./pages/CreateAccount";
+
+
 
 export const MyRoutes = () => {
     return (
@@ -17,7 +19,9 @@ export const MyRoutes = () => {
                 <Route path="/" element={ <Landing />}>
 
                 </Route>
-                <Route path="/create-account" element={<CreateAccount />}></Route>
+                <Route path="/create-account" element={<CreateAccount />} />
+
+        
             </Routes>
         </Router>
     )
