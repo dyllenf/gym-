@@ -32,7 +32,7 @@ export const SignIn = () => {
         
     }
     const handleCreateAccountClick = () => {
-        navigate('/createAccount'); 
+        navigate('/create-account'); 
     }
 
 
