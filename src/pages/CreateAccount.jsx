@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '/Users/sn/Extra/GymTracker/gym-buddy/src/App.css';
 
 const CreateAccount = () => {
     const [formData, setFormData] = useState({
@@ -80,11 +81,10 @@ const CreateAccount = () => {
                         className="p-2 rounded-md border border-gray-300 bg-white"
                     >
                         <option value="">Select Style of Lifting</option>
-                        <option value="">Select Style of Lifting</option>
-                        <option value="Calisthenics">Calisthenics</option>
-                        <option value="Powerlifting">Powerlifting</option>
-                        <option value="Bodybuilding">Bodybuilding</option>
-                        <option value="Athletic Training">Athletic Training</option>
+                            <option value="Calisthenics">Calisthenics</option>
+                            <option value="Powerlifting">Powerlifting</option>
+                            <option value="Bodybuilding">Bodybuilding</option>
+                            <option value="Athletic Training">Athletic Training</option>
                     </select>
 
                     <select 
