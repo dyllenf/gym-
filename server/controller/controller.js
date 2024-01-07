@@ -1,4 +1,6 @@
 const bcrypt = require('bcrypt')
+const User = require('../model/schema')
+const jwt = require("jsonwebtoken")
 // controller for register
 exports.registerUser = async (req,res) => {
     try{
@@ -23,7 +25,21 @@ exports.registerUser = async (req,res) => {
         // hashing password
         const hash = await bcrypt.hashSync(password, 10)
 
-        res.json({ email, hash, passwordCheck, username })
+        // using document structure
+        const newUser = new User({ 
+            email,
+            password: hash,
+            username 
+        })
+
+        newUser
+            .save(newUser)
+            .then(register => {
+                res.json({register})
+            })
+            .catch(error => {
+                res.status(406).json({ err: error.message || "Something went wrong during registration"})
+            })
     } catch (error) {
         res.status(500).json({err: error.message || "Error while registration"})
     }
@@ -32,17 +48,14 @@ exports.registerUser = async (req,res) => {
 
 
 // controller for login
-exports.login = (req, res) => {
-
+exports.login = async (req, res) => {
 
     try {
-
         // validate request
         if(!req.body){
             res.status(406).json({ err: "You have to fill the email and password"})
             return
         }
-
 
         // get user data
         const { email, password } = req.body
@@ -52,14 +65,37 @@ exports.login = (req, res) => {
             res.status(406).json({ err: "Not all fields have been entered" })
         }
 
-        const user = "$2b$10$mwefxQ3yL3FWxZrubUHWK.GQd2o7.9tQ34Dv3m5GMA6zXQgtsHf1O"
-        // compare the password
-        const isMatch = bcrypt.compare(password,user )
+        const user = await User.findOne({ email })
+        if (!user){
+            return res.status(406).json({ err: "No account with this email"})
+        }
+        
 
-        res.json({ email, isMatch }) 
+        // compare the password
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        
+
+        if (!isMatch) return res.status(406).json({ err: "Incorrect Password"})
+
+        // create jwt token
+        const token = jwt.sign( {id:user._id}, "1FOdnO0mz1QyJlb")
+
+        res.json({ token, username: user.username, email: user.email }) 
         
     } catch (error) {
         res.status(500).json({ err: error.message || "Error while logging in"})
     }
     
+}
+
+// delete user controller
+exports.delete = async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.user_id)
+        res.json({ msg: "User Deleted Successfully"})
+    } catch (error) {
+        res.status(500).json({ err: error.message || "Error while deleting user"})
+    }
+
 }
