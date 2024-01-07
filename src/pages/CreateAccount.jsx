@@ -53,7 +53,7 @@ const CreateAccount = () => {
                         placeholder="Last Name"
                         value={formData.lastName}
                         onChange={handleChange}
-                        className="p-2 rounded-md border border-gray-300"
+                        className="p-2 rounded-md border border-slate-200 border-4"
                     />
 
                     <input
