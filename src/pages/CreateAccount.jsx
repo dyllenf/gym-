@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '/Users/sn/Extra/GymTracker/gym-buddy/src/App.css';
+import '../App.css';
 
 const CreateAccount = () => {
     const [formData, setFormData] = useState({
