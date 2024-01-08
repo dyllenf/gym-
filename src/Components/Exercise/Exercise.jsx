@@ -6,19 +6,25 @@ import CompletedSet from "../CompletedSet/CompletedSet"
 export default function Exercise( {exerciseName}) {
   const [sets, setSets] = useState([]);
 
-    const updateSet = (setNumber, newReps, newWeight) => {
+    const updateSet = (set_no, newReps, newWeight) => {
         const updatedSets = sets.map((set, index) => {
-            if (index === setNumber - 1) {
-                return { ...set, reps: newReps, weight: newWeight };
+            if (index === set_no - 1) {
+                return { ...set, reps: newReps, weight: newWeight, setNumber: set_no };
             }
             return set;
         });
         setSets(updatedSets);
     };
 
+    const deleteSet = (index) => {
+      const newSets = sets.filter((_, idx) => idx !== index);
+      setSets(newSets);
+    }
+
   const addSet = (newSet) => {
     setSets([...sets, newSet]);
   };
+
     return (
         <div className="exercise-container rounded-xl w-1/2 h-2/3 ">
             <div className="exercise-name w-full font-bold p-2 rounded-xl text-center"> {exerciseName}</div>
@@ -30,7 +36,7 @@ export default function Exercise( {exerciseName}) {
                 <div className="bg-cyan-400 rounded-md p-1">Enter</div>
             </div>
             {sets.map((set, index) => (
-        <CompletedSet reps={set.reps} weight={set.weight} setNumber={index+1} onUpdate={updateSet}/>
+        <CompletedSet reps={set.reps} weight={set.weight} setNumber={index+1} onUpdate={updateSet} onDelete={deleteSet}/>
       ))}
       <Set onEnter={addSet} setNumber={sets.length + 1} />
 
