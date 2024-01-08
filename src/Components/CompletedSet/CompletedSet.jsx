@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Set({ reps, weight, setNumber, onUpdate }) {
+export default function Set({ reps, weight, setNumber, onUpdate, onDelete }) {
 
     const [editMode, setEditMode] = useState(false);
     const [currentReps, setCurrentReps] = useState(reps);
@@ -26,8 +26,13 @@ export default function Set({ reps, weight, setNumber, onUpdate }) {
         handleModeChange();
     }
 
+    const handleDelete = (setNumber) => {
+        onDelete(setNumber -  1);
+    }
+
     return (
         <div className="p-2 mt-2 flex justify-evenly w-full font-bold text-center">
+
             <div className="headers w-1/6">{setNumber}</div>
             <div className="headers w-1/3"></div>
             
@@ -50,7 +55,12 @@ export default function Set({ reps, weight, setNumber, onUpdate }) {
            />
            <button type="submit" 
            className="bg-cyan-400 rounded-md p-1"
-           onClick={handleSubmit}>Enter</button></>
+           onClick={handleSubmit}>Enter</button>
+           <button type="submit" 
+           className="bg-cyan-400 rounded-md p-1"
+           onClick={handleDelete}>Delete</button>
+           </>
+           
             ) : (
             <>
             <div className='headers w-1/6'>{currentReps}</div>

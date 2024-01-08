@@ -13,7 +13,7 @@ export const Landing = () => {
         // Somewhere in your component
         <div>
             <Link to="/login">Login</Link>
-            <Link to="src/Components/Workout/CompletedWorkouts.jsx">Workout</Link>
+            <Link to="/tracking">Workout</Link>
 
            
 
