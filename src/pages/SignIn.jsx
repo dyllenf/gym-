@@ -23,10 +23,10 @@ export const SignIn = () => {
                 navigate('/landing');
             } else {
                 const errorData = await response.json();
-                alert(errorData.error || 'Invalid email or password.'); 
+                setError(errorData.error || 'Invalid email or password.'); 
             }
         } catch (error) {
-            alert('An error occurred during sign-in. Please try again.');
+            setError('An error occurred during sign-in. Please try again.');
         }
     };
 
