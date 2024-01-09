@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
@@ -10,8 +9,7 @@ export const SignIn = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setError(null);
-
+        setError(null); 
         try {
             const response = await fetch('localhost:4000/api/login', { 
                 method: 'POST',
@@ -25,23 +23,14 @@ export const SignIn = () => {
                 navigate('/landing');
             } else {
                 const errorData = await response.json();
-                setError(errorData.error); //Check based on what output we want
+                setError(errorData.error || 'Invalid email or password.'); 
+
+           
             }
         } catch (error) {
             setError('An error occurred during sign-in. Please try again.');
         }
     };
-
-    
-
-    const handleSignInClick = () => {
-        navigate('/Landing');
-        
-    }
-    const handleCreateAccountClick = () => {
-        navigate('/create-account'); 
-    }
-
 
     return (
         <div className='Main'>
@@ -51,10 +40,11 @@ export const SignIn = () => {
                     <form className='signUp' onSubmit={handleSubmit}>
                         <input className='input' type='email' placeholder='Email Address' value={email} onChange={e => setEmail(e.target.value)} />
                         <input className='input' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
-                        <button className='button' onClick={handleSignInClick}>Sign In</button>
+                        <button className='button' type='submit'>Sign In</button>
                     </form>
+                    {error && <div className='error-message'>{error}</div>}
                     <p className='description'>Don't have an account? Sign up now!</p>
-                    <button className='button' onClick={handleCreateAccountClick}>Create Account</button>
+                    <button className='button' onClick={() => navigate('/create-account')}>Create Account</button>
                 </div>
             </div>
         </div>
