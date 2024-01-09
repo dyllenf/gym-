@@ -24,6 +24,8 @@ export const SignIn = () => {
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || 'Invalid email or password.'); 
+
+           
             }
         } catch (error) {
             setError('An error occurred during sign-in. Please try again.');
