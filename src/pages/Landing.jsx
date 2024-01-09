@@ -14,10 +14,8 @@ export const Landing = () => {
         <div>
             <Link to="/login">Login</Link>
             <Link to="/tracking">Workout</Link>
-
-           
-
-           
+            <Link to="/workoutLanding">Workout</Link>
+            
         </div>
         
         
