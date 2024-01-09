@@ -43,7 +43,7 @@ const CreateAccount = () => {
         }
        
         try {
-            const response = await fetch('/register', { // replace with your actual registration endpoint
+            const response = await fetch(' localhost:4000/api/register', { // replace with your actual registration endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
