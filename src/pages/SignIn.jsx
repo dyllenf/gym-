@@ -6,22 +6,29 @@ export const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError(null);
 
         try {
-            // Send request to backend to check if email exists
-            const response = await axios.post('/api/check-email', { email });
-            if (response.data.exists) {
-                setError('Account with this email already exists.');
+            const response = await fetch('localhost:4000/api/login', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                navigate('/landing');
             } else {
-                // Proceed with account creation
+                const errorData = await response.json();
+                setError(errorData.error); //Check based on what output we want
             }
         } catch (error) {
-            setError('An error occurred while checking the account.');
+            setError('An error occurred during sign-in. Please try again.');
         }
     };
 
