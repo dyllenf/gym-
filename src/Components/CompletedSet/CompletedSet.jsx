@@ -26,8 +26,8 @@ export default function Set({ reps, weight, setNumber, onUpdate, onDelete }) {
         handleModeChange();
     }
 
-    const handleDelete = (setNumber) => {
-        onDelete(setNumber -  1);
+    const handleDelete = () => {
+        onDelete(setNumber);
     }
 
     return (
@@ -57,7 +57,7 @@ export default function Set({ reps, weight, setNumber, onUpdate, onDelete }) {
            className="bg-cyan-400 rounded-md p-1"
            onClick={handleSubmit}>Enter</button>
            <button type="submit" 
-           className="bg-cyan-400 rounded-md p-1"
+           className="bg-rose-400 rounded-md p-1"
            onClick={handleDelete}>Delete</button>
            </>
            

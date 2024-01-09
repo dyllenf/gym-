@@ -6,25 +6,26 @@ import CompletedSet from "../CompletedSet/CompletedSet"
 export default function Exercise( {exerciseName}) {
   const [sets, setSets] = useState([]);
 
-    const updateSet = (set_no, newReps, newWeight) => {
+    const updateSet = (setNumber, newReps, newWeight) => {
         const updatedSets = sets.map((set, index) => {
-            if (index === set_no - 1) {
-                return { ...set, reps: newReps, weight: newWeight, setNumber: set_no };
+            if (index === setNumber - 1) {
+                return { ...set, reps: newReps, weight: newWeight };
             }
             return set;
         });
         setSets(updatedSets);
     };
 
-    const deleteSet = (index) => {
-      const newSets = sets.filter((_, idx) => idx !== index);
-      setSets(newSets);
+    const deleteSet = (set_no) => {
+      const newSets = sets.filter((set, idx) => idx+1 !== set_no)
+      setSets(newSets)
+      console.log(newSets)
+      console.log(set_no)
     }
 
   const addSet = (newSet) => {
     setSets([...sets, newSet]);
   };
-
     return (
         <div className="exercise-container rounded-xl w-1/2 h-2/3 ">
             <div className="exercise-name w-full font-bold p-2 rounded-xl text-center"> {exerciseName}</div>
