@@ -11,7 +11,8 @@ export const SignIn = () => {
         event.preventDefault();
         setError(null); 
         try {
-            const response = await fetch('localhost:4000/api/login', { 
+            const response = await fetch('http://localhost:4000/api/login', { 
+                mode: 'no-cors',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,15 +20,20 @@ export const SignIn = () => {
                 body: JSON.stringify({ email, password })
             });
 
+            console.log('Response status:', response.status);
             if (response.ok) {
+               // console.log('Sign in successful, navigating to /landing');
                 navigate('/landing');
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || 'Invalid email or password.'); 
+                //console.log('Error data:', errorData);
             }
         } catch (error) {
+            //console.error('Catch block error:', error);
             setError('An error occurred during sign-in. Please try again.');
         }
+    
     };
 
     return (
