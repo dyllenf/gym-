@@ -12,6 +12,7 @@ export const SignIn = () => {
         setError(null); 
         try {
             const response = await fetch('http://localhost:4000/api/login', { 
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,19 +21,24 @@ export const SignIn = () => {
                     "email": email, "password": password })
             });
 
+            console.log('Response status:', response.status);
             if (response.ok) {
+               // console.log('Sign in successful, navigating to /landing');
                 navigate('/landing');
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || 'Invalid email or password.'); 
 
-           
             }
+
+
         } catch (error){
             console.error('Response status:', error.response.status);
             console.error('Response headers:', error.response.headers);
+
             setError('An error occurred during sign-in. Please try again.');
         }
+    
     };
 
     return (
