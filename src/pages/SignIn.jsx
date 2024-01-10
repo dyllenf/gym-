@@ -12,12 +12,13 @@ export const SignIn = () => {
         setError(null); 
         try {
             const response = await fetch('http://localhost:4000/api/login', { 
-                mode: 'no-cors',
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ 
+                    "email": email, "password": password })
             });
 
             console.log('Response status:', response.status);
@@ -29,8 +30,12 @@ export const SignIn = () => {
                 setError(errorData.error || 'Invalid email or password.'); 
 
             }
-        } catch (error) {
-            
+
+
+        } catch (error){
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+
             setError('An error occurred during sign-in. Please try again.');
         }
     
