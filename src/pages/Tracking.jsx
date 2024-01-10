@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Exercise from '../Components/Exercise/Exercise';
+import CurrentWorkout from '../Components/Workout/CurrentWorkout ';
 
 
 
@@ -9,8 +10,10 @@ import Exercise from '../Components/Exercise/Exercise';
 export const Tracking = () => {
 
     return (
-        
-       <Exercise exerciseName={"Bench Press"}/>
+        <div className="w-5/6 h-3/4 border-4 border-black">
+            <CurrentWorkout day={"Chest Day"}/>
+        </div>
+       
         
     )
     

@@ -11,12 +11,13 @@ export const SignIn = () => {
         event.preventDefault();
         setError(null); 
         try {
-            const response = await fetch('localhost:4000/api/login', { 
+            const response = await fetch('http://localhost:4000/api/login', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ 
+                    "email": email, "password": password })
             });
 
             if (response.ok) {
@@ -27,7 +28,9 @@ export const SignIn = () => {
 
            
             }
-        } catch (error) {
+        } catch (error){
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
             setError('An error occurred during sign-in. Please try again.');
         }
     };
