@@ -27,10 +27,10 @@ export const SignIn = () => {
             } else {
                 const errorData = await response.json();
                 setError(errorData.error || 'Invalid email or password.'); 
-                //console.log('Error data:', errorData);
+
             }
         } catch (error) {
-            //console.error('Catch block error:', error);
+            
             setError('An error occurred during sign-in. Please try again.');
         }
     
