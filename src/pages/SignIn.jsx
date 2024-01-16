@@ -12,6 +12,7 @@ export const SignIn = () => {
         setError(null); 
         try {
             const response = await fetch('http://localhost:4000/api/login', { 
+                // mode: 'no-cors',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
