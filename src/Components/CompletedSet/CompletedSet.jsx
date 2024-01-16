@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Set({ reps, weight, setNumber, onUpdate, onDelete, completed }) {
+export default function Set({ reps, weight, setNumber, onUpdate, onDelete }) {
 
     // const [completed, setCompleted] = useState(false);
     const [editMode, setEditMode] = useState(false);
@@ -35,17 +35,7 @@ export default function Set({ reps, weight, setNumber, onUpdate, onDelete, compl
         <div className="p-2 mt-2 flex justify-evenly w-full font-bold text-center">
 
 
-            {completed ? (
-                <>
-                    <div className="headers w-1/6">{setNumber}</div>
-                    <div className="headers w-1/3"></div>
-                    <div className='headers w-1/6'>{currentReps}</div>
-                    <div className='headers w-1/6'>{currentWeight}</div>
-                </>
-                
-                
-            ) : 
-            (
+            
                 <>
                 <div className="headers w-1/6">{setNumber}</div>
                 <div className="headers w-1/3"></div>
@@ -83,7 +73,7 @@ export default function Set({ reps, weight, setNumber, onUpdate, onDelete, compl
                     
                     )
                      }
-            </>)}
+            </>
         </div>
     );
 }

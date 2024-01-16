@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export default function Set({ onEnter, setNumber }) {
   const [reps, setReps] = useState('');
   const [weight, setWeight] = useState('');
+  let completed = false;
 
   const handleSubmit = (event) => {
     event.preventDefault();
