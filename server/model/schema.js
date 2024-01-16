@@ -17,5 +17,34 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+const setSchema = new mongoose.Schema({
+    reps : {
+        type : Number,
+        required : true
+    },
+
+    weight : {
+        type : Number,
+        required : true,
+    }
+
+})
+
+
+const workoutSchema = new mongoose.Schema({
+    userId : {
+        type: Number,
+        unique: true,
+        required: true,
+    },
+    exercise : {
+        type: "object",
+        required: true,
+            properties : {
+                sets : [setSchema]
+            } 
+    },
+})
+
 
 module.exports = User = mongoose.model('user', userSchema)
