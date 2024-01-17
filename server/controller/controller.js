@@ -99,3 +99,39 @@ exports.delete = async (req, res) => {
     }
 
 }
+
+
+exports.addWorkout = (req, res) => {
+
+    try{
+        
+        if (!req,body){
+            res.status(406).json({ err: "Invalid workout" })
+            return
+        }
+
+        let { userId, exercises } = req.body
+
+        if (!exercises){
+            return res.status(406).json({ err: "You must have at least one exercise" })
+
+        }
+
+        const newWorkout = new Workout({
+            userId,
+            exercises
+        })
+
+        newWorkout
+            .save(newWorkout)
+            .then(added => {
+                res.json({added})
+            })
+            .catch(error => {
+                res.status(406).json({ err: error.message || "Something went wrong during adding a workout"})
+            })
+    } catch (error) {
+        res.status(500).json({err: error.message || "Error while adding workout"})
+    }
+
+    }
