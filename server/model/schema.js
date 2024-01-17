@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
 
     },
     userID : {
-        types: mongoose.SchemaType.Types.ObjectId,
+        types: mongoose.Schema.Types.ObjectId,
         unique: true,
         required: true
     },
@@ -43,7 +43,7 @@ const workoutSchema = new mongoose.Schema({
         required: true,
     },
     workoutID : {
-        type: mongoose.SchemaType.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         unique: true,
         required: true,
     },
