@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const liftingStyles = {
     'Calisthenics': 1,
     'Powerlifting': 2,
@@ -33,7 +34,6 @@ const CreateAccount = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
     
-        // Prepare the submission data
         let submissionData = { ...formData};
     
         // Convert styleOfLifting to numeric value if it exists in liftingStyles
@@ -42,7 +42,7 @@ const CreateAccount = () => {
         }
        
         try {
-            const response = await fetch('localhost:4000/api/register', { // replace with your actual registration endpoint
+            const response = await fetch(' localhost:4000/api/register', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,9 +52,10 @@ const CreateAccount = () => {
 
             if (response.ok) {
                 navigate('/landing');
+
             } else {
                 const errorData = await response.json(); 
-                setErrorMessage(errorData.err); // Adjust based on your error response
+                setErrorMessage(errorData.err);
             }
         } catch (error) {
             setErrorMessage('Account could not be created. Please try again.');

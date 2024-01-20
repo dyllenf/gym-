@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
 
     },
     userID : {
-        types: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         unique: true,
         required: true
     },
@@ -55,5 +55,6 @@ const workoutSchema = new mongoose.Schema({
             } 
     }
 })
+
 
 module.exports = User = mongoose.model('user', userSchema)

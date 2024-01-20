@@ -1,11 +1,9 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customDark: '#28282B', // Add your hex value here
+      },
+    },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-};
+}

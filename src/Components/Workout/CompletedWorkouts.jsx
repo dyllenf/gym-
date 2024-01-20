@@ -10,6 +10,9 @@ export default function CompletedWorkouts({ day, exercises }) {
     navigate('src/Components/Exercise/Exercise.jsx'); // NEED TO DISCUSS HOW WE WANNA APPROACH
   };
 
+  //Make These Changes
+
+
   return (
     <div className="Current-Workout">
       <h2>{day} Workout</h2>

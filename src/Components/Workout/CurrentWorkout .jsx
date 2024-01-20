@@ -48,6 +48,7 @@ export default function CurrentWorkout({ day }) {
     
   }
 
+
   return (
     
     <div className="Current-Workout font-semibold justify-items-center justify-center text-center flex-col space-y-8">
@@ -63,7 +64,6 @@ export default function CurrentWorkout({ day }) {
       className="add-exercise-btn bg-cyan-200 rounded-xl p-2 font-semibold">
         Add Exercise</button>
         <button className="bg-emerald-400 rounded-md p-1" onClick={completeWorkout}>Complete Workout</button>
-    </div>
-    
+    </div>    
   );
 }
